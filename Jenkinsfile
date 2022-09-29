@@ -25,7 +25,7 @@ pipeline {
             steps {
                 sh '''python3 -m pytest \
                     -v --junitxml=junit.xml \
-                    --cov-report xml --cov adder adder.py
+                    --cov-report xml --cov subtractor subtractor.py
                 '''
             }
         }
