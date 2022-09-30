@@ -2,22 +2,16 @@ pipeline {
     agent {
         dockerfile {
             label 'docker'
+            filename 'premerge.dockerfile'
         }
     }
+    parameters {
+        string(name: 'REF', defaultValue: '\${ghprbActualCommit}', description: 'Commit to build')
+    }
     stages {
-        stage('Hello GitHub') {
-            steps {
-                echo "Hello GitHub!"
-            }
-        }
         stage('Compile') {
             steps {
                 sh 'python3 -m compileall subtractor.py'
-            }
-        }
-        stage('Run') {
-            steps {
-                sh 'python3 subtractor.py 5 3'
             }
         }
         stage('Unit test') {
@@ -33,6 +27,7 @@ pipeline {
         always {
             junit 'junit.xml'
             cobertura coberturaReportFile: 'coverage.xml'
+            cleanWs()
         }
     }
 }
