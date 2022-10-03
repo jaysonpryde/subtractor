@@ -6,9 +6,9 @@ pipeline {
         }
     }
     stages {
-        stage('Hello GitHub') {
+        stage('Hello GitHub 1') {
             steps {
-                echo "Hello GitHub!"
+                echo "Hello GitHub 1!"
             }
         }
         stage('Compile') {
