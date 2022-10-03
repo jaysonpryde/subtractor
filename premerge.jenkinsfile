@@ -6,6 +6,11 @@ pipeline {
         }
     }
     stages {
+        stage('Hello GitHub 4') {
+            steps {
+                echo "Hello GitHub! 4"
+            }
+        }
         stage('Compile') {
             steps {
                 sh 'python3 -m compileall subtractor.py'
