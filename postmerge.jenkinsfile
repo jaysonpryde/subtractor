@@ -66,7 +66,6 @@ pipeline {
                     docker.withRegistry("${ECR_ENDPOINT}", "${ECS_CREDENTIALS}") {
                       def app_web = docker.image("jaysonpryde/subtractor")
                       app_web.push("${version_g}")
-                      app_web.push("latest")
                     }
                 }
             }
