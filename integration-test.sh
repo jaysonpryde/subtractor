@@ -5,7 +5,8 @@ FIRST=$1
 SECOND=$2
 EXPECTED=$3
 VERSION=${4:-latest}
-DIFF=$(docker run jaysonpryde/subtractor:${VERSION} ${FIRST} ${SECOND})
+IMAGE="ci_cd_v1"
+DIFF=$(docker run ${IMAGE}:${VERSION} ${FIRST} ${SECOND})
 
 if [[ "${DIFF}" == "${EXPECTED}" ]]; then
     echo "Integration test passed"
