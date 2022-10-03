@@ -64,7 +64,7 @@ pipeline {
                     def ECR_ENDPOINT = "https://071103955219.dkr.ecr.ap-southeast-1.amazonaws.com"
                     def ECS_CREDENTIALS =  "ecr:ap-southeast-1:ecr-deployer-credentials"
                     docker.withRegistry("${ECR_ENDPOINT}", "${ECS_CREDENTIALS}") {
-                      def app_web = docker.image("jaysonpryde/subtractor")
+                      def app_web = docker.image("jaysonpryde/subtractor:${version_g}")
                       app_web.push("${version_g}")
                     }
                 }
