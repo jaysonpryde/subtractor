@@ -1,17 +1,15 @@
 #!/bin/bash
 set -e
 
-FIRST=$1
-SECOND=$2
-EXPECTED=$3
-VERSION=${4:-latest}
+EXPECTED=5
+VERSION=${1:-latest}
 IMAGE="ci_cd_v1"
-DIFF=$(docker run ${IMAGE}:${VERSION} ${FIRST} ${SECOND})
+DIFF=$(docker run ${IMAGE}:${VERSION} 8 3)
 
 if [[ "${DIFF}" == "${EXPECTED}" ]]; then
     echo "Integration test passed"
 else
-    echo "[ERROR] ${FIRST} + ${SECOND} returned ${DIFF}, not ${EXPECTED}" >&2
+    echo "[ERROR] 8 - 3 returned ${DIFF}, not ${EXPECTED}" >&2
     exit 1
 fi
 
